@@ -2,8 +2,11 @@ package com.navin.alarmproject;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.multidex.BuildConfig;
 
 import android.Manifest;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -28,6 +31,7 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.karumi.dexter.listener.single.PermissionListener;
 import com.navin.alarmproject.databinding.ActivityMainBinding;
 import com.navin.alarmproject.models.Application;
+import com.navin.alarmproject.services.AlarmService;
 import com.navin.alarmproject.services.UpdateService;
 import com.navin.alarmproject.webService.ImessageListener;
 import com.navin.alarmproject.webService.WebServiceCaller;
@@ -86,6 +90,11 @@ WebServiceCaller webServiceCaller;
                 requestStoragePermission();
             }
         });
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        Intent alarm_intent = new Intent(getApplicationContext(), AlarmService.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),1,alarm_intent,0);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,System.currentTimeMillis(),30*1000,pendingIntent);
+
     }
 
     /**
@@ -198,4 +207,8 @@ WebServiceCaller webServiceCaller;
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, 100);
     }
+
+
+
+
 }

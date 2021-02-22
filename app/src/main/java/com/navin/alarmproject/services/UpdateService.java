@@ -9,14 +9,11 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import com.google.gson.Gson;
-import com.navin.alarmproject.BuildConfig;
-import com.navin.alarmproject.models.Application;
-import com.navin.alarmproject.webService.ImessageListener;
+
 import com.navin.alarmproject.webService.WebServiceCaller;
 
 public class UpdateService extends Service {
-WebServiceCaller webServiceCaller;
+
 
     @Override
     public void onCreate() {

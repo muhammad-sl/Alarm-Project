@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AlarmProject</string>
+    <string name="today">Today</string>
+    <string name="size_number">12</string>
 </resources>
