@@ -2,4 +2,7 @@
     <string name="app_name">AlarmProject</string>
     <string name="today">Today</string>
     <string name="size_number">12</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="add_alarm">Add Alarm</string>
 </resources>
