@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.AppCompatButton;
@@ -17,6 +18,8 @@ public class AlarmDialog {
 
     Activity activity;
     AppDateBase appDateBase;
+    int mhour = 0 ;
+    int mminute = 0 ;
 
     public AlarmDialog(Activity activity , AppDateBase appDateBase) {
         this.appDateBase =appDateBase;
@@ -36,13 +39,29 @@ public class AlarmDialog {
         TimePicker timePicker = view.findViewById(R.id.time_picker);
         AppCompatButton btn_add = view.findViewById(R.id.btn_add_alarm);
 
+        timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
+            @Override
+            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+
+                mhour = hourOfDay;
+                mminute = minute;
+
+            }
+        });
+
 
         btn_add.setOnClickListener(v -> {
             String tilte = edt_title.getText().toString();
             String description =edt_description.getText().toString();
-            Alarm alarm = new Alarm(tilte,description,12,12); //until min 25 watched
+            Alarm alarm = new Alarm(tilte,description,mhour,mminute);
 
-            appDateBase.idao().insert(alarm);
+            long result = appDateBase.idao().insert(alarm);
+
+            if(result > 0 ){
+                // watched until min 30
+            }else{
+                Toast.makeText(activity, "Error Creating DateBase", Toast.LENGTH_SHORT).show();
+            }
         });
 
 
