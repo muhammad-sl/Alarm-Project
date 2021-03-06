@@ -7,6 +7,9 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.Switch;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageView;
@@ -62,6 +65,21 @@ AlarmManager alarmManager;
             alarmManager.cancel(pendingIntent);
 
         });
+        holder.aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    Intent intent = new Intent(context,AlarmService.class);
+                    int hour = alarm.getHour();
+                    int minute = alarm.getMinute();
+                    Toast.makeText(context, "Alarm set for "+ hour + " : " + minute, Toast.LENGTH_SHORT).show();
+                }else{
+                    Intent intent = new Intent(context, AlarmService.class);
+                    PendingIntent pendingIntent = PendingIntent.getBroadcast(context, alarm.getId(),intent,0);
+                    alarmManager.cancel(pendingIntent);
+                }
+            }
+        });
 
     }
 
@@ -74,6 +92,7 @@ AlarmManager alarmManager;
     AppCompatTextView title,description;
         AppCompatTextView hour,minute;
         AppCompatImageView delete_alarm;
+        Switch aSwitch;
 
 
         public AlarmVH(@NonNull View itemView) {
@@ -83,6 +102,7 @@ AlarmManager alarmManager;
             title = itemView.findViewById(R.id.txt_title);
             description = itemView.findViewById(R.id.txt_description);
             delete_alarm = itemView.findViewById(R.id.delete_alarm);
+            aSwitch = itemView.findViewById(R.id.switch_alarm);
         }
     }
 }

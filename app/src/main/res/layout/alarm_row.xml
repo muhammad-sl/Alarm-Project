@@ -18,7 +18,7 @@
             android:background="#FFFFFF">
 
             <Switch
-                android:id="@+id/switch1"
+                android:id="@+id/switch_alarm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="8dp"
-                android:layout_toStartOf="@id/switch1"
+                android:layout_toStartOf="@id/switch_alarm"
                 android:text="@string/today"
                 android:visibility="gone" />
 
@@ -42,7 +42,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="16dp"
-                android:text="@string/size_number"
                 android:textSize="30sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -51,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@id/txt_hour"
-                android:text=":"
+                android:text="@string/colon"
                 android:textSize="30sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -60,7 +59,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@id/twopoints"
-                android:text="30"
                 android:textSize="30sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -69,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="8dp"
-                android:text="Title"
+                android:text="@string/title"
                 android:textColor="@color/black" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -80,14 +78,14 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="Description"
+                android:text="@string/description"
                 android:textColor="@color/black" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/delete_alarm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/switch1"
+                android:layout_below="@id/switch_alarm"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
                 app:srcCompat="@drawable/ic_baseline_delete_forever_24" />

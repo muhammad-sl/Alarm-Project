@@ -1,4 +1,4 @@
-package activity;
+package com.navin.alarmproject.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
