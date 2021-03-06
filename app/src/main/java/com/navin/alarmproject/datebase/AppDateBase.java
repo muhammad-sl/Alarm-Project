@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase;
 
 import com.navin.alarmproject.models.Alarm;
 
-@Database(entities = Alarm.class ,version = 1 , exportSchema = true)
+@Database(entities = {Alarm.class}   ,version = 1 , exportSchema = true)
 public abstract  class AppDateBase extends RoomDatabase {
 
     public abstract IDAO idao();

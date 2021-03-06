@@ -18,6 +18,6 @@ public interface IDAO {
     @Delete
     void delete(Alarm alarm);
 
-    @Query("select * from tbl_alarm")
+    @Query("select * from tbl_alarm  order by id desc" )
     List<Alarm> getAlarmList();
 }
